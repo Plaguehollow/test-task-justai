@@ -1,0 +1,13 @@
+<test>
+    
+    <test-case>
+        <q>Moscow</q>
+        <a>city: Moscow</a>
+    </test-case>
+
+    <test-case>
+        <q>погода в Питере?</q>
+        <a>city: Санкт-Петербург</a>
+    </test-case>       
+
+</test>

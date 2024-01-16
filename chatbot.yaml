@@ -1,0 +1,17 @@
+name: games-test
+
+entryPoint:
+  - main.sc
+
+botEngine: v2
+language: ru
+
+sts:
+    noMatchThreshold: 0.2
+
+caila:
+    noMatchThreshold: 0.2
+
+dependencies:
+  - name: zenbot-common
+    type: module

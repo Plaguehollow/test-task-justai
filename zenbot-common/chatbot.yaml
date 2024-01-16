@@ -1,0 +1,9 @@
+﻿name: zenbot-common
+
+entryPoint: test.sc
+  
+tests:
+#  include:
+#    - catchAll.xml
+  exclude:
+    - text.xml

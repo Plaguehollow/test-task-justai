@@ -1,0 +1,28 @@
+<test>
+    
+    <test-case>
+        <q>33</q>
+        <a>number: 33</a>
+    </test-case>  
+
+    <test-case>
+        <q>тридцать три</q>
+        <a>number: 33</a>
+    </test-case> 
+
+    <test-case>
+        <q>второй</q>
+        <a>number: 2</a>
+    </test-case>
+
+<!--    <test-case>
+        <q>триста восемдесят шесть миллионов пятсот тысяч двадцать семь</q>
+        <a>number: 386500027</a>
+    </test-case> -->
+
+    <test-case>
+        <q>2 миллиона и 3 тысячи</q>
+        <a>number: 2003000</a>
+    </test-case>  
+
+</test>

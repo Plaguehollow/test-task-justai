@@ -1,0 +1,113 @@
+<test>
+
+    <test-case>
+        <q>и что теперь</q>
+        <a state="/CatchAll/SeemsMeaningful"/>
+        <q>дебил!</q>
+        <a state="/CatchAll/NegativeEmotion"/>
+    </test-case>
+
+    <test-case>
+        <q>ты дебил?</q>
+        <a state="/CatchAll/NegativeEmotion"/>
+        <q>ты дебил!</q>
+        <a state="/CatchAll/NegativeEmotion"/>
+    </test-case>
+
+    <test-case>
+        <q>какой-то непонятный текст.</q>
+        <a state="/CatchAll/SeemsMeaningful"/>
+        <q>другая непонятная фигня</q>
+        <a state="/CatchAll/DoYouWannaSwitch?"/>
+        <q>зелёные облака и розовые пони</q>
+        <a state="/CatchAll/DoYouWannaSwitch?"/>
+    </test-case>
+    
+    <test-case>
+        <q>какой-то непонятный текст.</q>
+        <a state="/CatchAll/SeemsMeaningful"/>
+        <q>другая непонятная фигня</q>
+        <a state="/CatchAll/DoYouWannaSwitch?"/>
+        <q>не сейчас</q>
+        <a state="/CatchAll/AskAgain?"/>
+    </test-case>
+
+    <test-case id="Отказ от перевода на оператора">
+        <q>какой-то непонятный текст.</q>
+        <a state="/CatchAll/SeemsMeaningful"/>
+        <q>другая непонятная фигня</q>
+        <a state="/CatchAll/DoYouWannaSwitch?"/>
+        <q>нет</q>
+        <a state="/CatchAll/AskAgain?"/>
+    </test-case>
+
+    <test-case>
+        <q>какой-то непонятный текст.</q>
+        <a state="/CatchAll/SeemsMeaningful"/>
+        <q>другая непонятная фигня</q>
+        <a state="/CatchAll/DoYouWannaSwitch?"/>
+        <q>да</q>
+        <a state="/CatchAll/Switch"/>
+    </test-case>
+    
+    <!--<test-case>-->
+        <!--<q> какой-то непонятный текст.</q>-->
+        <!--<a state="/CatchAll/SeemsMeaningful"/>-->
+        <!--<q>другая непонятная фигня</q>-->
+        <!--<a state="/CatchAll/DoYouWannaSwitch?"/>-->
+        <!--<responseData field="replies[1]"> {type:"switch", closeChatPhrases: ["/close","вернуться в беседу с роботом"], firstMessage: "другая непонятная фигня" } </responseData>-->
+    <!--</test-case>-->
+    
+    <test-case id="Мусор">
+        <q>пй3куа2</q>
+        <a state="/CatchAll/Nonsense"/>
+        <a state="/CatchAll/Nonsense"/>
+        <q>пй3куа2 ммй3а й3пкуа</q>
+        <a state="/CatchAll/Nonsense"/>
+        <a state="/CatchAll/Nonsense"/>
+        <q>sgetg3</q>
+        <a state="/CatchAll/Nonsense"/>
+        <a state="/CatchAll/Nonsense"/>
+    </test-case>
+
+    <test-case id="Вроде бы мусор">
+        <q>телефон hhvq фыавмй3</q>
+        <a state="/CatchAll/ProbablyNonsense"/>
+        <q>память hhvq фыавмй3</q>
+        <a state="/CatchAll/ProbablyNonsense"/>
+        <q>память hhvq фыавмй3</q>
+        <a state="/CatchAll/DoYouWannaSwitch?"/>
+    </test-case>
+    
+    <test-case id="Снова вроде бы мусор">
+        <q>телефон hhvq фыавмй3</q>
+        <a state="/CatchAll/ProbablyNonsense"/>
+        <q>память hhvq фыавмй3</q>
+        <a state="/CatchAll/ProbablyNonsense"/>
+        <q>память hhvq фыавмй3</q>
+        <a state="/CatchAll/DoYouWannaSwitch?"/>
+    </test-case>
+
+    <test-case id="Неправильная раскладка">
+        <q>Cfyrn-Gtnth,ehu</q>
+        <a state="/CatchAll/Transliteration">Вы имели в виду 'Санкт-Петербург' ?</a>
+        <q>да</q>
+        <a state="/CityPattern"/>.
+    </test-case>
+
+    <test-case id="Негатив сразу не переводим на оператора 1">
+        <q>где моя чертова тушь?? сучки!</q>
+        <a state="/CatchAll/NegativeEmotion"/>
+    </test-case>
+
+    <!--<test-case id="Негатив сразу не переводим на оператора 2">-->
+        <!--<q>когда вы мне пришлете тушь????!!!!</q>-->
+        <!--<a state="/CatchAll/NegativeEmotion"/>-->
+    <!--</test-case>-->
+
+    <test-case>
+        <q>где мои розовые слоники?</q>
+        <a state="/CatchAll/SeemsMeaningful"/>
+    </test-case>
+
+</test>
