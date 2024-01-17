@@ -48,7 +48,7 @@ theme: /
                 
     state: StopGame
         intent: /Stop
-        a:Вы отгадали {{$session.points}} стран
+        a:Вы отгадали {{$session.points}} стран. Если захотите продолжить просто напишите старт или го.
         script:
             $session.points = 0
     
