@@ -69,7 +69,8 @@
       "name" : "City",
       "entity" : "AnswerCity",
       "required" : true,
-      "prompts" : [ ]
+      "prompts" : [ ],
+      "array" : false
     } ],
     "priority" : 0
   } ],
