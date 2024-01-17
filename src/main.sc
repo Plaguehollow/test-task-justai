@@ -24,7 +24,7 @@ theme: /
 
     state: Start
         q!: $regex</start>
-        a: Предлагаю поиграть в игру "угадай столицу".
+        a: Предлагаю поиграть в игру "угадай столицу". Для страрта напишите старт или го.
 
     state: CountryPattern
         intent: /startGame
