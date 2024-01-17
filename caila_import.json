@@ -1,8 +1,8 @@
 {
   "project" : {
-    "id" : "novoe_testovoe_zadan-118460505-htr",
-    "name" : "novoe_testovoe_zadan-118460505-htr",
-    "folder" : "/jaicp"
+    "id" : "test_task-1000125320-jqn",
+    "name" : "test_task-1000125320-jqn",
+    "folder" : "/platform"
   },
   "settings" : {
     "language" : "ru",
@@ -13,26 +13,850 @@
       "tokenizerEngine" : "mystem",
       "useShared" : false
     },
-    "shared" : false
+    "shared" : false,
+    "validation" : {
+      "phraseValidationEnabled" : false,
+      "answerValidationEnabled" : false,
+      "phraseValidationThreshold" : 0.5,
+      "answerValidationThreshold" : 0.8
+    }
   },
   "intents" : [ {
-    "id" : 64952,
-    "path" : "/пока",
+    "path" : "/startGame",
     "enabled" : true,
     "shared" : false,
     "phrases" : [ {
-      "text" : "пока"
-    } ]
+      "text" : "Давай начнем"
+    }, {
+      "text" : "Старт"
+    }, {
+      "text" : "Го"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "patterns" : [ ],
+    "priority" : 0
   }, {
-    "id" : 64953,
-    "path" : "/привет",
+    "path" : "/Stop",
     "enabled" : true,
     "shared" : false,
     "phrases" : [ {
-      "text" : "привет"
+      "text" : "хватит"
+    }, {
+      "text" : "стоп"
+    }, {
+      "text" : "конец"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "patterns" : [ ],
+    "priority" : 0
+  }, {
+    "path" : "/City",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ ],
+    "classificationRules" : {
+      "refs" : [ {
+        "entityName" : "AnswerCity",
+        "predicate" : "CONTAINS"
+      } ]
+    },
+    "patterns" : [ "@AnswerCity" ],
+    "slots" : [ {
+      "name" : "City",
+      "entity" : "AnswerCity",
+      "required" : true,
+      "prompts" : [ ]
+    } ],
+    "priority" : 0
+  } ],
+  "entities" : [ {
+    "entity" : {
+      "name" : "AnswerCity",
+      "enabled" : true,
+      "shared" : false,
+      "type" : "annotation",
+      "priority" : 1,
+      "noSpelling" : true,
+      "noMorph" : false,
+      "phoneticSearch" : false,
+      "fuzzySearch" : false,
+      "client" : false,
+      "hidden" : false
+    },
+    "records" : [ {
+      "type" : "synonyms",
+      "rule" : [ "Абу-Даби", "Абу Даби" ],
+      "value" : "{\"name\":\"Абу-Даби\",\"country\":\"Объединённые Арабские Эмираты\",\"genCountry\":\"Объединённых Арабских Эмиратов\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"3\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Абуджа" ],
+      "value" : "{\"name\":\"Абуджа\",\"country\":\"Нигерия\",\"genCountry\":\"Нигерии\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Аддис-Абеба", "Аддис Абеба" ],
+      "value" : "{\"name\":\"Аддис-Абеба\",\"country\":\"Эфиопия\",\"genCountry\":\"Эфиопии\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"4\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Аккра" ],
+      "value" : "{\"name\":\"Аккра\",\"country\":\"Гана\",\"genCountry\":\"Ганы\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Алжир" ],
+      "value" : "{\"name\":\"Алжир\",\"country\":\"Алжир\",\"genCountry\":\"Алжира\",\"continent\":\"Африка\",\"duplicateName\":\"true\",\"facts\":[],\"complexity\":\"3\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Амман" ],
+      "value" : "{\"name\":\"Амман\",\"country\":\"Иордания\",\"genCountry\":\"Иордании\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"4\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Амстердам" ],
+      "value" : "{\"name\":\"Амстердам\",\"country\":\"Нидерланды\",\"genCountry\":\"Нидерландов\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[\"В Амстердаме большинство жителей города передвигаются на велосипеде.\",\"В Амстердаме есть кошачий корабль, на котором живут бездомные животные.\"],\"complexity\":\"1\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Андорра-ла-Велья" ],
+      "value" : "{\"name\":\"Андорра-ла-Велья\",\"country\":\"Андорра\",\"genCountry\":\"Андорры\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"4\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Анкара" ],
+      "value" : "{\"name\":\"Анкара\",\"country\":\"Турция\",\"genCountry\":\"Турции\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"3\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Антананариву" ],
+      "value" : "{\"name\":\"Антананариву\",\"country\":\"Мадагаскар\",\"genCountry\":\"Мадагаскара\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Апиа" ],
+      "value" : "{\"name\":\"Апиа\",\"country\":\"Самоа\",\"genCountry\":\"Самоа\",\"continent\":\"Австралия и Океания\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Асмэра" ],
+      "value" : "{\"name\":\"Асмэра\",\"country\":\"Эритрея\",\"genCountry\":\"Эритреи\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Астана" ],
+      "value" : "{\"name\":\"Астана\",\"country\":\"Казахстан\",\"genCountry\":\"Казахстана\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"2\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Асунсьон" ],
+      "value" : "{\"name\":\"Асунсьон\",\"country\":\"Парагвай\",\"genCountry\":\"Парагвая\",\"continent\":\"Южная Америка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Афины" ],
+      "value" : "{\"name\":\"Афины\",\"country\":\"Греция\",\"genCountry\":\"Греции\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[\"Именно Афины считаются родиной театра.\"],\"complexity\":\"1\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Ашхабад" ],
+      "value" : "{\"name\":\"Ашхабад\",\"country\":\"Туркмения\",\"genCountry\":\"Туркмении\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"3\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Багдад" ],
+      "value" : "{\"name\":\"Багдад\",\"country\":\"Ирак\",\"genCountry\":\"Ирака\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"3\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Баку" ],
+      "value" : "{\"name\":\"Баку\",\"country\":\"Азербайджан\",\"genCountry\":\"Азербайджана\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"3\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Бамако" ],
+      "value" : "{\"name\":\"Бамако\",\"country\":\"Мали\",\"genCountry\":\"Мали\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Банги" ],
+      "value" : "{\"name\":\"Банги\",\"country\":\"Центральноафриканская Республика\",\"genCountry\":\"Центральноафриканской Республики\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Бангкок", "банков" ],
+      "value" : "{\"name\":\"Бангкок\",\"country\":\"Таиланд\",\"genCountry\":\"Таиланда\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"3\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Бандар-Сери-Бегаван" ],
+      "value" : "{\"name\":\"Бандар-Сери-Бегаван\",\"country\":\"Бруней\",\"genCountry\":\"Брунея\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Банжул" ],
+      "value" : "{\"name\":\"Банжул\",\"country\":\"Гамбия\",\"genCountry\":\"Гамбии\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Бастер" ],
+      "value" : "{\"name\":\"Бастер\",\"country\":\"Сент-Китс и Невис\",\"genCountry\":\"Сент-Китса и Невиса\",\"continent\":\"Северная Америка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Бейрут" ],
+      "value" : "{\"name\":\"Бейрут\",\"country\":\"Ливан\",\"genCountry\":\"Ливана\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"4\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Белград" ],
+      "value" : "{\"name\":\"Белград\",\"country\":\"Сербия\",\"genCountry\":\"Сербии\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"3\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Бельмопан" ],
+      "value" : "{\"name\":\"Бельмопан\",\"country\":\"Белиз\",\"genCountry\":\"Белиза\",\"continent\":\"Северная Америка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Берлин" ],
+      "value" : "{\"name\":\"Берлин\",\"country\":\"Германия\",\"genCountry\":\"Германии\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[\"В Берлине находится самый большой дом шоколада.\"],\"complexity\":\"1\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Берн" ],
+      "value" : "{\"name\":\"Берн\",\"country\":\"Швейцария\",\"genCountry\":\"Швейцарии\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[\"Город Берн получил свое название в честь медведя.\"],\"complexity\":\"2\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Бисау", "биссау" ],
+      "value" : "{\"name\":\"Бисау\",\"country\":\"Гвинея-Бисау\",\"genCountry\":\"Гвинея-Бисау\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"4\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Бишкек" ],
+      "value" : "{\"name\":\"Бишкек\",\"country\":\"Киргизия\",\"genCountry\":\"Киргизии\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"3\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Богота" ],
+      "value" : "{\"name\":\"Богота\",\"country\":\"Колумбия\",\"genCountry\":\"Колумбии\",\"continent\":\"Южная Америка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Браззавиль" ],
+      "value" : "{\"name\":\"Браззавиль\",\"country\":\"Республика Конго\",\"genCountry\":\"Республики Конго\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Бразилиа" ],
+      "value" : "{\"name\":\"Бразилиа\",\"country\":\"Бразилия\",\"genCountry\":\"Бразилии\",\"continent\":\"Южная Америка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"2\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Братислава" ],
+      "value" : "{\"name\":\"Братислава\",\"country\":\"Словакия\",\"genCountry\":\"Словакии\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"3\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Бриджтаун" ],
+      "value" : "{\"name\":\"Бриджтаун\",\"country\":\"Барбадос\",\"genCountry\":\"Барбадоса\",\"continent\":\"Северная Америка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Брюссель" ],
+      "value" : "{\"name\":\"Брюссель\",\"country\":\"Бельгия\",\"genCountry\":\"Бельгии\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[\"Считается, что именно в Брюсселе была придумана картошка фри.\"],\"complexity\":\"1\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Будапешт" ],
+      "value" : "{\"name\":\"Будапешт\",\"country\":\"Венгрия\",\"genCountry\":\"Венгрии\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"2\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Бужумбура" ],
+      "value" : "{\"name\":\"Бужумбура\",\"country\":\"Бурунди\",\"genCountry\":\"Бурунди\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Бухарест" ],
+      "value" : "{\"name\":\"Бухарест\",\"country\":\"Румыния\",\"genCountry\":\"Румынии\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"2\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Буэнос-Айрес" ],
+      "value" : "{\"name\":\"Буэнос-Айрес\",\"country\":\"Аргентина\",\"genCountry\":\"Аргентины\",\"continent\":\"Южная Америка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"2\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Вадуц" ],
+      "value" : "{\"name\":\"Вадуц\",\"country\":\"Лихтенштейн\",\"genCountry\":\"Лихтенштейна\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"4\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Валлетта" ],
+      "value" : "{\"name\":\"Валлетта\",\"country\":\"Мальта\",\"genCountry\":\"Мальты\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"4\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Варшава" ],
+      "value" : "{\"name\":\"Варшава\",\"country\":\"Польша\",\"genCountry\":\"Польши\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[\"Именно в Варшаве находится самый узкий дом в мире - всего сто двадцать два сантиметра в ширину.\"],\"complexity\":\"1\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Вашингтон" ],
+      "value" : "{\"name\":\"Вашингтон\",\"country\":\"Соединённые Штаты Америки\",\"genCountry\":\"Соединённых Штатов Америки\",\"continent\":\"Северная Америка\",\"duplicateName\":\"false\",\"facts\":[\"Именно в Вашингтоне по неизвестным причинам запрещены леденцы на палочке.\",\"Именно в Вашингтоне находится Белый дом, где жили и работали все президенты Соединенных Штатов Америки.\"],\"complexity\":\"1\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Веллингтон" ],
+      "value" : "{\"name\":\"Веллингтон\",\"country\":\"Новая Зеландия\",\"genCountry\":\"Новой Зеландии\",\"continent\":\"Австралия и Океания\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"4\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Вена" ],
+      "value" : "{\"name\":\"Вена\",\"country\":\"Австрия\",\"genCountry\":\"Австрии\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[\"В Вене выпускается самая старая газета в мире.\",\"В Вене был впервые испечен круассан.\",\"В Вене находится старейший в мире зоопарк.\"],\"complexity\":\"1\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Виктория" ],
+      "value" : "{\"name\":\"Виктория\",\"country\":\"Сейшельские Острова\",\"genCountry\":\"Сейшельских Островов\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Вильнюс" ],
+      "value" : "{\"name\":\"Вильнюс\",\"country\":\"Литва\",\"genCountry\":\"Литвы\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"2\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Виндхук" ],
+      "value" : "{\"name\":\"Виндхук\",\"country\":\"Намибия\",\"genCountry\":\"Намибии\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Вьентьян" ],
+      "value" : "{\"name\":\"Вьентьян\",\"country\":\"Лаос\",\"genCountry\":\"Лаоса\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Габороне" ],
+      "value" : "{\"name\":\"Габороне\",\"country\":\"Ботсвана\",\"genCountry\":\"Ботсваны\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Гавана" ],
+      "value" : "{\"name\":\"Гавана\",\"country\":\"Куба\",\"genCountry\":\"Кубы\",\"continent\":\"Северная Америка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"3\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Гватемала" ],
+      "value" : "{\"name\":\"Гватемала\",\"country\":\"Гватемала\",\"genCountry\":\"Гватемалы\",\"continent\":\"Северная Америка\",\"duplicateName\":\"true\",\"facts\":[],\"complexity\":\"4\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Дакар" ],
+      "value" : "{\"name\":\"Дакар\",\"country\":\"Сенегал\",\"genCountry\":\"Сенегала\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"4\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Дакка" ],
+      "value" : "{\"name\":\"Дакка\",\"country\":\"Бангладеш\",\"genCountry\":\"Бангладеша\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Дамаск" ],
+      "value" : "{\"name\":\"Дамаск\",\"country\":\"Сирия\",\"genCountry\":\"Сирии\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[\"В Дамаске впервые на планете научились изготовлять сталь.\",\"Дамаск - старейшая столица мира, этому городу насчитывается более четырех с половиной тысяч лет.\"],\"complexity\":\"3\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Джакарта" ],
+      "value" : "{\"name\":\"Джакарта\",\"country\":\"Индонезия\",\"genCountry\":\"Индонезии\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"3\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Джибути" ],
+      "value" : "{\"name\":\"Джибути\",\"country\":\"Джибути\",\"genCountry\":\"Джибути\",\"continent\":\"Африка\",\"duplicateName\":\"true\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Джорджтаун" ],
+      "value" : "{\"name\":\"Джорджтаун\",\"country\":\"Гайана\",\"genCountry\":\"Гайаны\",\"continent\":\"Южная Америка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Джуба" ],
+      "value" : "{\"name\":\"Джуба\",\"country\":\"Южный Судан\",\"genCountry\":\"Южного Судана\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Дили" ],
+      "value" : "{\"name\":\"Дили\",\"country\":\"Восточный Тимор\",\"genCountry\":\"Восточного Тимора\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Додома" ],
+      "value" : "{\"name\":\"Додома\",\"country\":\"Танзания\",\"genCountry\":\"Танзании\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Доха" ],
+      "value" : "{\"name\":\"Доха\",\"country\":\"Катар\",\"genCountry\":\"Катара\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Дублин" ],
+      "value" : "{\"name\":\"Дублин\",\"country\":\"Ирландия\",\"genCountry\":\"Ирландии\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"2\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Душанбе" ],
+      "value" : "{\"name\":\"Душанбе\",\"country\":\"Таджикистан\",\"genCountry\":\"Таджикистана\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[\"Город Душанбе образовался на месте базара, который устраивался каждый понедельник\",\"Cлово Душанбе в дословном переводе с таджикского означает понедельник.\"],\"complexity\":\"3\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Ереван" ],
+      "value" : "{\"name\":\"Ереван\",\"country\":\"Армения\",\"genCountry\":\"Армении\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"3\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Загреб" ],
+      "value" : "{\"name\":\"Загреб\",\"country\":\"Хорватия\",\"genCountry\":\"Хорватии\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"3\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Южная Тарава" ],
+      "value" : "{\"name\":\"Южная Тарава\",\"country\":\"Кирибати\",\"genCountry\":\"Кирибати\",\"continent\":\"Австралия и Океания\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Ямусукро" ],
+      "value" : "{\"name\":\"Ямусукро\",\"country\":\"Кот-дИвуар\",\"genCountry\":\"Кот-дИвуара\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Исламабад" ],
+      "value" : "{\"name\":\"Исламабад\",\"country\":\"Пакистан\",\"genCountry\":\"Пакистана\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"4\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Кабул" ],
+      "value" : "{\"name\":\"Кабул\",\"country\":\"Афганистан\",\"genCountry\":\"Афганистана\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"4\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Каир" ],
+      "value" : "{\"name\":\"Каир\",\"country\":\"Египет\",\"genCountry\":\"Египта\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"3\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Кампала" ],
+      "value" : "{\"name\":\"Кампала\",\"country\":\"Уганда\",\"genCountry\":\"Уганды\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Канберра" ],
+      "value" : "{\"name\":\"Канберра\",\"country\":\"Австралия\",\"genCountry\":\"Австралии\",\"continent\":\"Австралия и Океания\",\"duplicateName\":\"false\",\"facts\":[\"В городе Канберра есть весьма необычный отель, где можно пожить бок-о-бок с дикими зверями.\"],\"complexity\":\"3\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Каракас" ],
+      "value" : "{\"name\":\"Каракас\",\"country\":\"Венесуэла\",\"genCountry\":\"Венесуэлы\",\"continent\":\"Южная Америка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"4\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Кастри" ],
+      "value" : "{\"name\":\"Кастри\",\"country\":\"Сент-Люсия\",\"genCountry\":\"Сент-Люсии\",\"continent\":\"Северная Америка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Катманду" ],
+      "value" : "{\"name\":\"Катманду\",\"country\":\"Непал\",\"genCountry\":\"Непала\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"4\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Кигали" ],
+      "value" : "{\"name\":\"Кигали\",\"country\":\"Руанда\",\"genCountry\":\"Руанды\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Киев" ],
+      "value" : "{\"name\":\"Киев\",\"country\":\"Украина\",\"genCountry\":\"Украины\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[\"Считается, что в Киеве самая глубокая станция метро в мире, которая называется Арсенальная. \"],\"complexity\":\"1\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Кингстаун" ],
+      "value" : "{\"name\":\"Кингстаун\",\"country\":\"Сент-Винсент и Гренадины\",\"genCountry\":\"Сент-Винсента и Гренадинов\",\"continent\":\"Северная Америка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Кингстон" ],
+      "value" : "{\"name\":\"Кингстон\",\"country\":\"Ямайка\",\"genCountry\":\"Ямайки\",\"continent\":\"Северная Америка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Киншаса" ],
+      "value" : "{\"name\":\"Киншаса\",\"country\":\"Демократическая Республика Конго\",\"genCountry\":\"Демократической Республики Конго\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Кито" ],
+      "value" : "{\"name\":\"Кито\",\"country\":\"Эквадор\",\"genCountry\":\"Эквадора\",\"continent\":\"Южная Америка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Кишинёв" ],
+      "value" : "{\"name\":\"Кишинёв\",\"country\":\"Молдавия\",\"genCountry\":\"Молдавии\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"3\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Конакри" ],
+      "value" : "{\"name\":\"Конакри\",\"country\":\"Гвинея\",\"genCountry\":\"Гвинеи\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Копенгаген" ],
+      "value" : "{\"name\":\"Копенгаген\",\"country\":\"Дания\",\"genCountry\":\"Дании\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[\"В Копенгагене установлен памятник Русалочке.\"],\"complexity\":\"1\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Куала-Лумпур.Куала Лумпур" ],
+      "value" : "{\"name\":\"Куала-Лумпур\",\"country\":\"Малайзия\",\"genCountry\":\"Малайзии\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"4\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Либревиль" ],
+      "value" : "{\"name\":\"Либревиль\",\"country\":\"Габон\",\"genCountry\":\"Габона\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Лилонгве" ],
+      "value" : "{\"name\":\"Лилонгве\",\"country\":\"Малави\",\"genCountry\":\"Малави\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Лима" ],
+      "value" : "{\"name\":\"Лима\",\"country\":\"Перу\",\"genCountry\":\"Перу\",\"continent\":\"Южная Америка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"4\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Лиссабон" ],
+      "value" : "{\"name\":\"Лиссабон\",\"country\":\"Португалия\",\"genCountry\":\"Португалии\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"2\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Ломе" ],
+      "value" : "{\"name\":\"Ломе\",\"country\":\"Того\",\"genCountry\":\"Того\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Лондон" ],
+      "value" : "{\"name\":\"Лондон\",\"country\":\"Великобритания\",\"genCountry\":\"Великобритании\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[\"Именно в Лондоне открыли первое метро.\",\"Именно в Лондоне был открыт первый зоопарк.\"],\"complexity\":\"1\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Луанда" ],
+      "value" : "{\"name\":\"Луанда\",\"country\":\"Ангола\",\"genCountry\":\"Анголы\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Лусака" ],
+      "value" : "{\"name\":\"Лусака\",\"country\":\"Замбия\",\"genCountry\":\"Замбии\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Любляна" ],
+      "value" : "{\"name\":\"Любляна\",\"country\":\"Словения\",\"genCountry\":\"Словении\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"3\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Люксембург" ],
+      "value" : "{\"name\":\"Люксембург\",\"country\":\"Люксембург\",\"genCountry\":\"Люксембурга\",\"continent\":\"Европа\",\"duplicateName\":\"true\",\"facts\":[],\"complexity\":\"3\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Маджуро" ],
+      "value" : "{\"name\":\"Маджуро\",\"country\":\"Маршалловы Острова\",\"genCountry\":\"Маршалловых Островов\",\"continent\":\"Австралия и Океания\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Мадрид" ],
+      "value" : "{\"name\":\"Мадрид\",\"country\":\"Испания\",\"genCountry\":\"Испании\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[\"В Мадриде каждое воскресенье с марта по октябрь проходят бои быков.\"],\"complexity\":\"1\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Малабо" ],
+      "value" : "{\"name\":\"Малабо\",\"country\":\"Экваториальная Гвинея\",\"genCountry\":\"Экваториальной Гвинеи\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Мале" ],
+      "value" : "{\"name\":\"Мале\",\"country\":\"Мальдивские Острова\",\"genCountry\":\"Мальдивских Островов\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Манагуа" ],
+      "value" : "{\"name\":\"Манагуа\",\"country\":\"Никарагуа\",\"genCountry\":\"Никарагуа\",\"continent\":\"Северная Америка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Манама" ],
+      "value" : "{\"name\":\"Манама\",\"country\":\"Бахрейн\",\"genCountry\":\"Бахрейна\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Манила" ],
+      "value" : "{\"name\":\"Манила\",\"country\":\"Филиппины\",\"genCountry\":\"Филиппинов\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"3\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Мапуту" ],
+      "value" : "{\"name\":\"Мапуту\",\"country\":\"Мозамбик\",\"genCountry\":\"Мозамбика\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Масеру" ],
+      "value" : "{\"name\":\"Масеру\",\"country\":\"Лесото\",\"genCountry\":\"Лесото\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Маскат" ],
+      "value" : "{\"name\":\"Маскат\",\"country\":\"Оман\",\"genCountry\":\"Омана\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Мбабане" ],
+      "value" : "{\"name\":\"Мбабане\",\"country\":\"Свазиленд\",\"genCountry\":\"Свазиленда\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Мехико" ],
+      "value" : "{\"name\":\"Мехико\",\"country\":\"Мексика\",\"genCountry\":\"Мексики\",\"continent\":\"Северная Америка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"2\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Минск" ],
+      "value" : "{\"name\":\"Минск\",\"country\":\"Белоруссия\",\"genCountry\":\"Белоруссии\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"1\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Могадишо" ],
+      "value" : "{\"name\":\"Могадишо\",\"country\":\"Сомали\",\"genCountry\":\"Сомали\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Монако" ],
+      "value" : "{\"name\":\"Монако\",\"country\":\"Монако\",\"genCountry\":\"Монако\",\"continent\":\"Европа\",\"duplicateName\":\"true\",\"facts\":[],\"complexity\":\"2\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Монровия" ],
+      "value" : "{\"name\":\"Монровия\",\"country\":\"Либерия\",\"genCountry\":\"Либерии\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Монтевидео" ],
+      "value" : "{\"name\":\"Монтевидео\",\"country\":\"Уругвай\",\"genCountry\":\"Уругвая\",\"continent\":\"Южная Америка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"4\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Морони" ],
+      "value" : "{\"name\":\"Морони\",\"country\":\"Коморские Острова\",\"genCountry\":\"Коморских Островов\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Москва" ],
+      "value" : "{\"name\":\"Москва\",\"country\":\"Россия\",\"genCountry\":\"России\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"1\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Найроби" ],
+      "value" : "{\"name\":\"Найроби\",\"country\":\"Кения\",\"genCountry\":\"Кении\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"4\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Нассау" ],
+      "value" : "{\"name\":\"Нассау\",\"country\":\"Багамские Острова\",\"genCountry\":\"Багамских Островов\",\"continent\":\"Северная Америка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Нгерулмуд" ],
+      "value" : "{\"name\":\"Нгерулмуд\",\"country\":\"Палау\",\"genCountry\":\"Палау\",\"continent\":\"Австралия и Океания\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Нджамена" ],
+      "value" : "{\"name\":\"Нджамена\",\"country\":\"Чад\",\"genCountry\":\"Чада\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Нейпьидо" ],
+      "value" : "{\"name\":\"Нейпьидо\",\"country\":\"Мьянма\",\"genCountry\":\"Мьянмы\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Ниамей" ],
+      "value" : "{\"name\":\"Ниамей\",\"country\":\"Нигер\",\"genCountry\":\"Нигера\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Никосия" ],
+      "value" : "{\"name\":\"Никосия\",\"country\":\"Кипр\",\"genCountry\":\"Кипра\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"4\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Нуакшот" ],
+      "value" : "{\"name\":\"Нуакшот\",\"country\":\"Мавритания\",\"genCountry\":\"Мавритании\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Нукуалофа" ],
+      "value" : "{\"name\":\"Нукуалофа\",\"country\":\"Тонга\",\"genCountry\":\"Тонги\",\"continent\":\"Австралия и Океания\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Нью-Дели", "Нью Дели" ],
+      "value" : "{\"name\":\"Нью-Дели\",\"country\":\"Индия\",\"genCountry\":\"Индии\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"2\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Осло" ],
+      "value" : "{\"name\":\"Осло\",\"country\":\"Норвегия\",\"genCountry\":\"Норвегии\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"2\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Оттава" ],
+      "value" : "{\"name\":\"Оттава\",\"country\":\"Канада\",\"genCountry\":\"Канады\",\"continent\":\"Северная Америка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"2\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Паликир" ],
+      "value" : "{\"name\":\"Паликир\",\"country\":\"Федеративные Штаты Микронезии\",\"genCountry\":\"Федеративных Штатов Микронезии\",\"continent\":\"Австралия и Океания\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Панама" ],
+      "value" : "{\"name\":\"Панама\",\"country\":\"Панама\",\"genCountry\":\"Панамы\",\"continent\":\"Северная Америка\",\"duplicateName\":\"true\",\"facts\":[],\"complexity\":\"3\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Парамарибо" ],
+      "value" : "{\"name\":\"Парамарибо\",\"country\":\"Суринам\",\"genCountry\":\"Суринама\",\"continent\":\"Южная Америка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Париж" ],
+      "value" : "{\"name\":\"Париж\",\"country\":\"Франция\",\"genCountry\":\"Франции\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"1\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Пекин" ],
+      "value" : "{\"name\":\"Пекин\",\"country\":\"Китай\",\"genCountry\":\"Китая\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"1\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Пномпень" ],
+      "value" : "{\"name\":\"Пномпень\",\"country\":\"Камбоджа\",\"genCountry\":\"Камбоджи\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Подгорица" ],
+      "value" : "{\"name\":\"Подгорица\",\"country\":\"Черногория\",\"genCountry\":\"Черногории\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"3\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Порт-Вила", "Порт Вила" ],
+      "value" : "{\"name\":\"Порт-Вила\",\"country\":\"Вануату\",\"genCountry\":\"Вануату\",\"continent\":\"Австралия и Океания\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Порт-Луи", "Порт Луи" ],
+      "value" : "{\"name\":\"Порт-Луи\",\"country\":\"Маврикий\",\"genCountry\":\"Маврикия\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Порт-Морсби", "Порт Морсби" ],
+      "value" : "{\"name\":\"Порт-Морсби\",\"country\":\"Папуа - Новая Гвинея\",\"genCountry\":\"Папуа - Новой Гвинеи\",\"continent\":\"Австралия и Океания\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Порт-о-Пренс", "Порт о Пренс" ],
+      "value" : "{\"name\":\"Порт-о-Пренс\",\"country\":\"Гаити\",\"genCountry\":\"Гаити\",\"continent\":\"Северная Америка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Порт-оф-Спейн", "Порт оф Спейн" ],
+      "value" : "{\"name\":\"Порт-оф-Спейн\",\"country\":\"Тринидад и Тобаго\",\"genCountry\":\"Тринидад и Тобаго\",\"continent\":\"Северная Америка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Порто-Ново", "Порто Ново" ],
+      "value" : "{\"name\":\"Порто-Ново\",\"country\":\"Бенин\",\"genCountry\":\"Бенина\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Прага" ],
+      "value" : "{\"name\":\"Прага\",\"country\":\"Чехия\",\"genCountry\":\"Чехии\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"1\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Прая" ],
+      "value" : "{\"name\":\"Прая\",\"country\":\"Кабо-Верде\",\"genCountry\":\"Кабо-Верде\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Претория" ],
+      "value" : "{\"name\":\"Претория\",\"country\":\"Южно-Африканская Республика\",\"genCountry\":\"Южно-Африканской Республики\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Пхеньян" ],
+      "value" : "{\"name\":\"Пхеньян\",\"country\":\"Корейская Народно-Демократическая Республика\",\"genCountry\":\"Корейской Народно-Демократической Республики\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"4\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Рабат" ],
+      "value" : "{\"name\":\"Рабат\",\"country\":\"Марокко\",\"genCountry\":\"Марокко\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Рейкьявик" ],
+      "value" : "{\"name\":\"Рейкьявик\",\"country\":\"Исландия\",\"genCountry\":\"Исландии\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"3\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Рига" ],
+      "value" : "{\"name\":\"Рига\",\"country\":\"Латвия\",\"genCountry\":\"Латвии\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[\"Первая в мире рождественская елка была установлена именно в Риге.\"],\"complexity\":\"2\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Рим" ],
+      "value" : "{\"name\":\"Рим\",\"country\":\"Италия\",\"genCountry\":\"Италии\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"1\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Розо" ],
+      "value" : "{\"name\":\"Розо\",\"country\":\"Доминика\",\"genCountry\":\"Доминики\",\"continent\":\"Северная Америка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Сан-Марино", "Сан Марино", "Самарина" ],
+      "value" : "{\"name\":\"Сан-Марино\",\"country\":\"Сан-Марино\",\"genCountry\":\"Сан-Марино\",\"continent\":\"Европа\",\"duplicateName\":\"true\",\"facts\":[],\"complexity\":\"3\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Сан-Сальвадор", "Сан Сальвадор" ],
+      "value" : "{\"name\":\"Сан-Сальвадор\",\"country\":\"Сальвадор\",\"genCountry\":\"Сальвадора\",\"continent\":\"Северная Америка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Сан-Томе", "Сан Томе" ],
+      "value" : "{\"name\":\"Сан-Томе\",\"country\":\"Сан-Томе и Принсипи\",\"genCountry\":\"Сан-Томе и Принсипи\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Сан-Хосе", "Сан Хосе" ],
+      "value" : "{\"name\":\"Сан-Хосе\",\"country\":\"Коста-Рика\",\"genCountry\":\"Коста-Рика\",\"continent\":\"Северная Америка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Сана" ],
+      "value" : "{\"name\":\"Сана\",\"country\":\"Йемен\",\"genCountry\":\"Йемена\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Санто-Доминго", "Санто Доминго" ],
+      "value" : "{\"name\":\"Санто-Доминго\",\"country\":\"Доминиканская Республика\",\"genCountry\":\"Доминиканской Республики\",\"continent\":\"Северная Америка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"4\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Сантьяго" ],
+      "value" : "{\"name\":\"Сантьяго\",\"country\":\"Чили\",\"genCountry\":\"Чили\",\"continent\":\"Южная Америка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"4\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Сараево" ],
+      "value" : "{\"name\":\"Сараево\",\"country\":\"Босния и Герцеговина\",\"genCountry\":\"Боснии и Герцеговины\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"3\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Сент-Джонс", "Сент Джонс" ],
+      "value" : "{\"name\":\"Сент-Джонс\",\"country\":\"Антигуа и Барбуда\",\"genCountry\":\"Антигуа и Барбуда\",\"continent\":\"Северная Америка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Сент-Джорджес", "Сент Джорджес" ],
+      "value" : "{\"name\":\"Сент-Джорджес\",\"country\":\"Гренада\",\"genCountry\":\"Гренады\",\"continent\":\"Северная Америка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Сеул" ],
+      "value" : "{\"name\":\"Сеул\",\"country\":\"Республика Корея\",\"genCountry\":\"Республики Корея\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[\"В Сеуле находится самый длинный мост-фонтан в мире.\",\"В Сеуле находится самый длинный метрополитен в мир.\"],\"complexity\":\"2\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Сингапур" ],
+      "value" : "{\"name\":\"Сингапур\",\"country\":\"Сингапур\",\"genCountry\":\"Сингапура\",\"continent\":\"Азия\",\"duplicateName\":\"true\",\"facts\":[\"Символом Сингапура является рыба с головой льва.\"],\"complexity\":\"4\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Скопье" ],
+      "value" : "{\"name\":\"Скопье\",\"country\":\"Македония\",\"genCountry\":\"Македонии\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"4\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "София" ],
+      "value" : "{\"name\":\"София\",\"country\":\"Болгария\",\"genCountry\":\"Болгарии\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"2\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Стокгольм" ],
+      "value" : "{\"name\":\"Стокгольм\",\"country\":\"Швеция\",\"genCountry\":\"Швеции\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[\"В Стокгольме каждый год вручают Нобелевскую премию.\",\"В Стокгольме Астрид Линдгрен написала историю про Карлсона.\"],\"complexity\":\"1\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Сува" ],
+      "value" : "{\"name\":\"Сува\",\"country\":\"Фиджи\",\"genCountry\":\"Фиджи\",\"continent\":\"Австралия и Океания\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Сукре" ],
+      "value" : "{\"name\":\"Сукре\",\"country\":\"Боливия\",\"genCountry\":\"Боливии\",\"continent\":\"Южная Америка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Сухум" ],
+      "value" : "{\"name\":\"Сухум\",\"country\":\"Абхазия\",\"genCountry\":\"Абхазии\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"3\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Таллин" ],
+      "value" : "{\"name\":\"Таллин\",\"country\":\"Эстония\",\"genCountry\":\"Эстонии\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"1\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Ташкент" ],
+      "value" : "{\"name\":\"Ташкент\",\"country\":\"Узбекистан\",\"genCountry\":\"Узбекистана\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"3\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Тбилиси" ],
+      "value" : "{\"name\":\"Тбилиси\",\"country\":\"Грузия\",\"genCountry\":\"Грузии\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"2\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Тегеран" ],
+      "value" : "{\"name\":\"Тегеран\",\"country\":\"Иран\",\"genCountry\":\"Ирана\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"3\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Тегусигальпа" ],
+      "value" : "{\"name\":\"Тегусигальпа\",\"country\":\"Гондурас\",\"genCountry\":\"Гондураса\",\"continent\":\"Северная Америка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"4\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Тирана" ],
+      "value" : "{\"name\":\"Тирана\",\"country\":\"Албания\",\"genCountry\":\"Албании\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Токио" ],
+      "value" : "{\"name\":\"Токио\",\"country\":\"Япония\",\"genCountry\":\"Японии\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"1\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Триполи" ],
+      "value" : "{\"name\":\"Триполи\",\"country\":\"Ливия\",\"genCountry\":\"Ливии\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"3\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Тунис" ],
+      "value" : "{\"name\":\"Тунис\",\"country\":\"Тунис\",\"genCountry\":\"Туниса\",\"continent\":\"Африка\",\"duplicateName\":\"true\",\"facts\":[],\"complexity\":\"3\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Тхимпху" ],
+      "value" : "{\"name\":\"Тхимпху\",\"country\":\"Бутан\",\"genCountry\":\"Бутана\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Уагадугу" ],
+      "value" : "{\"name\":\"Уагадугу\",\"country\":\"Буркина-Фасо\",\"genCountry\":\"Буркина-Фасо\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Улан-Батор", "Улан Батор" ],
+      "value" : "{\"name\":\"Улан-Батор\",\"country\":\"Монголия\",\"genCountry\":\"Монголии\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"3\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Фритаун" ],
+      "value" : "{\"name\":\"Фритаун\",\"country\":\"Сьерра-Леоне\",\"genCountry\":\"Сьерра-Леоне\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Фунафути" ],
+      "value" : "{\"name\":\"Фунафути\",\"country\":\"Тувалу\",\"genCountry\":\"Тувалу\",\"continent\":\"Австралия и Океания\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Ханой" ],
+      "value" : "{\"name\":\"Ханой\",\"country\":\"Вьетнам\",\"genCountry\":\"Вьетнама\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Хараре" ],
+      "value" : "{\"name\":\"Хараре\",\"country\":\"Зимбабве\",\"genCountry\":\"Зимбабве\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Хартум" ],
+      "value" : "{\"name\":\"Хартум\",\"country\":\"Судан\",\"genCountry\":\"Судана\",\"continent\":\"Африка\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"4\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Хельсинки" ],
+      "value" : "{\"name\":\"Хельсинки\",\"country\":\"Финляндия\",\"genCountry\":\"Финляндии\",\"continent\":\"Европа\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"1\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Хониара" ],
+      "value" : "{\"name\":\"Хониара\",\"country\":\"Соломоновы Острова\",\"genCountry\":\"Соломоновых Островов\",\"continent\":\"Австралия и Океания\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Цхинвал" ],
+      "value" : "{\"name\":\"Цхинвал\",\"country\":\"Южная Осетия\",\"genCountry\":\"Южной Осетии\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"4\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Шри-Джаяварденепура-Котте", "Шри Джаяварденепура Котте" ],
+      "value" : "{\"name\":\"Шри-Джаяварденепура-Котте\",\"country\":\"Шри-Ланка\",\"genCountry\":\"Шри-Ланки\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Эль-Кувейт", "Эль Кувейт" ],
+      "value" : "{\"name\":\"Эль-Кувейт\",\"country\":\"Кувейт\",\"genCountry\":\"Кувейта\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"5\"}"
+    }, {
+      "type" : "synonyms",
+      "rule" : [ "Эр-Рияд", "Эр Рияд" ],
+      "value" : "{\"name\":\"Эр-Рияд\",\"country\":\"Саудовская Аравия\",\"genCountry\":\"Саудовской Аравии\",\"continent\":\"Азия\",\"duplicateName\":\"false\",\"facts\":[],\"complexity\":\"4\"}"
     } ]
   } ],
-  "entities" : [ ],
   "enabledSystemEntities" : [ "duckling.number", "duckling.time", "duckling.duration", "duckling.phone-number", "duckling.email", "duckling.url" ],
   "spellerDictionary" : [ ],
   "systemEntities" : [ {
@@ -137,5 +961,7 @@
   }, {
     "name" : "zb.number",
     "enabled" : false
-  } ]
+  } ],
+  "faq" : [ ],
+  "skills" : [ ]
 }

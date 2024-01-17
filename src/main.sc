@@ -24,16 +24,34 @@ theme: /
 
     state: Start
         q!: $regex</start>
-        a: Начнём.
+        a: Предлагаю поиграть в игру "угадай столицу".
 
-    state: CityPattern
-        q: * $City *
-        a: Город: {{$parseTree._City.name}}
-        
-    state: Text
-        q: $Word
-        a: Слово из справочника: {{$parseTree._Word.word}}
-
+    state: CountryPattern
+        intent: /startGame
+        script:
+            $session.Geography =  $Geography[$jsapi.random(192)]
+            var Country = $session.Geography.value.country
+            $reactions.answer("Какой город является столицей:" + capitalize($nlp.inflect(Country, "gent")));
+                
+    state: AssertCity
+        intent: /City
+        script:
+            var city = $parseTree._AnswerCity.name
+            if (city == $session.Geography.value.name) {
+                $reactions.answer("Ответ верный");
+                $reactions.transition("/CountryPattern");
+                $session.points += 1
+            }
+            else
+               $reactions.answer("Не верно. Ответ: {{$session.Geography.value.name}}");
+               $reactions.transition("/CountryPattern");
+                
+    state: StopGame
+        intent: /Stop
+        a:Вы отгадали {{$session.points}} стран
+        script:
+            $session.points = 0
+    
     state: NoMatch
         event!: noMatch
         a: Я не понял. Вы сказали: {{$request.query}}
@@ -44,4 +62,3 @@ theme: /
             $session = {};
             $client = {};
         go!: /
-

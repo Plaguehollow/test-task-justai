@@ -14,6 +14,11 @@ init:
     if (!$global.$converters) {
         $global.$converters = {};
     }
+    $global.$converters
+        .cityConverter = function(parseTree) {
+            var id = parseTree.Cities[0].value;
+            return $Cities[id].value;
+        };
 
 patterns:
     $Where = ($City|$Capital|$Country2City) || converter = $converters.propagateConverter
