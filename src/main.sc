@@ -58,7 +58,9 @@ theme: /
     
     state: NoMatch
         event!: noMatch
-        a: Я не понял. Вы сказали: {{$request.query}}
+        script: 
+            $reactions.answer("Не верно. Ответ:{{$session.Geography.value.name}}");
+            $reactions.transition("/CountryPattern");
 
     state: reset
         q!: reset
