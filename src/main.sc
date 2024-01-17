@@ -29,6 +29,9 @@ theme: /
     state: CountryPattern
         intent: /startGame
         script:
+            if ($session.points == null){
+                $session.points = 0
+                }
             $session.Geography =  $Geography[$jsapi.random(192)]
             var Country = $session.Geography.value.country
             $reactions.answer("Какой город является столицей:" + capitalize($nlp.inflect(Country, "gent")));
@@ -39,17 +42,18 @@ theme: /
             var city = $parseTree._AnswerCity.name
             if (city == $session.Geography.value.name) {
                 $reactions.answer("Ответ верный");
-                $reactions.transition("/CountryPattern");
                 $session.points += 1
+                $reactions.transition("/CountryPattern");
             }
             else
-               $reactions.answer("Не верно. Ответ: {{$session.Geography.value.name}}");
+               $reactions.answer("Не верно. Ответ:{{$session.Geography.value.name}}");
                $reactions.transition("/CountryPattern");
                 
     state: StopGame
         intent: /Stop
-        a:Вы отгадали {{$session.points}} стран. Если захотите продолжить просто напишите старт или го.
         script:
+            log($session.points)
+            $reactions.answer("Вы отгадали {{$session.points}} стран. Если захотите продолжить просто напишите старт или го.");
             $session.points = 0
     
     state: NoMatch
