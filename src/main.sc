@@ -1,70 +1,75 @@
 require: slotfilling/slotFilling.sc
-  module = sys.zb-common
-  
-require: text/text.sc
-    module = zenbot-common
-    
-require: where/where.sc
-    module = zenbot-common
+    module = sys.zb-common
 
 require: common.js
-    module = zenbot-common
+    module = sys.zb-common
 
-require: hangmanGameData.csv
+require: hangmanGameDataEng.csv
     name = HangmanGameData
     var = $HangmanGameData
 
 patterns:
     $Word = $entity<HangmanGameData> || converter = function ($parseTree) {
-        var id = $parseTree.HangmanGameData[0].value;
-        return $HangmanGameData[id].value;
+        var wordId = $reactions.random(86);
+        return $HangmanGameData[wordId].value;
         };
-
 theme: /
+    
+    state: GameBegins
+        intent!: /Game
+        script: 
+            var wordId = $reactions.random(86);
+            $session.word = $HangmanGameData[wordId].value.word;
+            var maskedword = word.replace(/./g, '_ ');
+            $reactions.answer("Guess the word: " + maskedword);
+            $session.guessedLetters = [];
+            $session.incorrectGuesses = 0;
+            $session.maxIncorrectGuesses = 6;
+            $reactions.transition("/GuessLetter")
+            
+    state: GuessLetter
+            script:
+                $reactions.answer("Guess a letter (or the whole word):")
+            
+    state: GameProcess
+            q: Text
+            script:
+                var guess = $request.query
+                if ($session.guessedLetters.includes(guess)) {
+                $reactions.answer("Hmmm, looks like you've already tried that letter. Could you choose another one?");
+                } else {
+                $session.guessedLetters.push(guess);
+                if (!$session.word.includes(guess)) {
+                    $session.incorrectGuesses += 1;
+                    }
+                }
+                if ($session.incorrectGuesses = 4);
+                $reactions.answer("Careful there, you've got 2 more attempts!");
+                elseif ($session.incorrectGuesses = 5);
+                $reactions.answer("Attention, you've got only 1 attempt left!");
+                var display = "";
+                for (var i = 0; i < $session.word.length; i += 1) {
+                    if ($session.guessedLetters.includes($session.word[i])) {
+                        display += $session.word[i];
+                    } else {
+                        display += "_ ";
+                    }
+                    
+    state: GameWon
+        event!: match
+        a: Congrats! You won! The right word was {{$session.word}} Let's play once again, shall we?
+        
+    state: GameOver
+        a: Oooops, you've got no attempts left. Game over! The correct word was: {{$session.word}}. Let's play again, shall we?
+        
+    state: Bye
+        intent!: /bye
+        a: Если нет Bye! Looking forward to playing with you soon
+        
+    state: NoMatch
+        event!: noMatch
+        a: Sorry, I don't understand. You said: {{$request.query}} . Can you please reformulate this?
 
     state: Start
         q!: $regex</start>
-        a: Предлагаю поиграть в игру "угадай столицу". Для страрта напишите старт или го.
-
-    state: CountryPattern
-        intent: /startGame
-        script:
-            if ($session.points == null){
-                $session.points = 0
-                }
-            $session.Geography =  $Geography[$jsapi.random(192)]
-            var Country = $session.Geography.value.country
-            $reactions.answer("Какой город является столицей:" + capitalize($nlp.inflect(Country, "gent")));
-                
-    state: AssertCity
-        intent: /City
-        script:
-            var city = $parseTree._AnswerCity.name
-            if (city == $session.Geography.value.name) {
-                $reactions.answer("Ответ верный");
-                $session.points += 1
-                $reactions.transition("/CountryPattern");
-            }
-            else
-               $reactions.answer("Не верно. Ответ:{{$session.Geography.value.name}}");
-               $reactions.transition("/CountryPattern");
-                
-    state: StopGame
-        intent: /Stop
-        script:
-            log($session.points)
-            $reactions.answer("Вы отгадали {{$session.points}} стран. Если захотите продолжить просто напишите старт или го.");
-            $session.points = 0
-    
-    state: NoMatch
-        event!: noMatch
-        script: 
-            $reactions.answer("Не верно. Ответ:{{$session.Geography.value.name}}");
-            $reactions.transition("/CountryPattern");
-
-    state: reset
-        q!: reset
-        script:
-            $session = {};
-            $client = {};
-        go!: /
+        a: Hey, do you want to play Hangman?
