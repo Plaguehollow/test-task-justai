@@ -55,21 +55,3 @@ theme: /
                         display += "_ ";
                     }
                     
-    state: GameWon
-        event!: match
-        a: Congrats! You won! The right word was {{$session.word}} Let's play once again, shall we?
-        
-    state: GameOver
-        a: Oooops, you've got no attempts left. Game over! The correct word was: {{$session.word}}. Let's play again, shall we?
-        
-    state: Bye
-        intent!: /bye
-        a: Если нет Bye! Looking forward to playing with you soon
-        
-    state: NoMatch
-        event!: noMatch
-        a: Sorry, I don't understand. You said: {{$request.query}} . Can you please reformulate this?
-
-    state: Start
-        q!: $regex</start>
-        a: Hey, do you want to play Hangman?
