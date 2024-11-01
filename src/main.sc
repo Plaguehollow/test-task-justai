@@ -43,26 +43,15 @@ theme: /
                     $session.guessedLetters.push(guess)};
                 if (!contains($session.word, guess)) {
                     $session.incorrectGuesses += 1;
+                }
+                for (var i = 0; i < $session.word.length; i += 1) {
+                    if (contains($session.guessedLetters($session.word[i]))) {
+                        display += $session.word[i];
+                    } 
+                    else {
+                        display += "_ ";
                     }
-                    for (var i = 0; i < $session.word.length; i += 1) {
-                        if ($session.guessedLetters.includes($session.word[i])) {
-                            display += $session.word[i];
-                        } 
-                        else {
-                            display += "_ ";
-                        }
-                    }
-                if (!$session.word.includes(guess)) {
-                    $session.incorrectGuesses += 1;
-                    }
-                    for (var i = 0; i < $session.word.length; i += 1) {
-                        if ($session.guessedLetters.includes($session.word[i])) {
-                            display += $session.word[i];
-                        } 
-                        else {
-                            display += "_ ";
-                        }
-                    }
+                }
                 if ($session.incorrectGuesses === 4){ 
                     $reactions.answer("Careful there, you've got 2 more attempts!")};
                  
