@@ -81,6 +81,28 @@
     "shared" : false,
     "phrases" : [ {
       "text" : "а"
+    }, {
+      "text" : "ю"
+    }, {
+      "text" : "б"
+    }, {
+      "text" : "в"
+    }, {
+      "text" : "н"
+    }, {
+      "text" : "п"
+    }, {
+      "text" : "о"
+    }, {
+      "text" : "а"
+    }, {
+      "text" : "ы"
+    }, {
+      "text" : "ф"
+    }, {
+      "text" : "е"
+    }, {
+      "text" : "г"
     } ],
     "classificationRules" : {
       "refs" : [ ]

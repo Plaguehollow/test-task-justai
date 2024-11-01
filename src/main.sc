@@ -1,5 +1,9 @@
 require: slotfilling/slotFilling.sc
     module = sys.zb-common
+    
+require: function.js
+    name = js
+    var = $js
 
 require: common.js
     module = sys.zb-common
@@ -21,43 +25,47 @@ theme: /
             var wordId = $reactions.random(86);
             $session.word = $HangmanGameData[wordId].value.word;
             var maskedword = $session.word.replace(/./g, '_ ');
-            $reactions.answer("Guess the word: " + maskedword);
-            $session.guessedLetters = ["f","e"];
+            $reactions.answer("Guess the word: " + maskedword + ". Guess a letter (or the whole word):");
+            $reactions.answer($session.word);
+            $session.guessedLetters = $session.guessedLetters || [];
             $session.incorrectGuesses = 0;
             $session.maxIncorrectGuesses = 6;
-            $reactions.answer($session.guessedLetters);
-            $reactions.transition("/GuessLetter")
-            
-    state: GuessLetter
-            script:
-                $reactions.answer("Guess a letter (or the whole word):")
-            
+        
     state: GameProcess
             intent: /Letter
             script:
                 var guess = $request.query
-                $reactions.answer($session.guessedLetters);
-                if ($session.guessedLetters.includes(guess)) {
-                $reactions.answer("Hmmm, looks like you've already tried that letter. Could you choose another one?");
-                } else {
-                $session.guessedLetters.push(guess);
+                var display = "";
+                if ($session.guessedLetters.contains(guess)) {
+                    $reactions.answer("Hmmm, looks like you've already tried that letter. Could you choose another one?");
+                } 
+                else {
+                    $session.guessedLetters.push(guess)};
                 if (!$session.word.includes(guess)) {
                     $session.incorrectGuesses += 1;
                     }
-                }
-                if ($session.incorrectGuesses = 4);
-                $reactions.answer("Careful there, you've got 2 more attempts!");
-                elseif ($session.incorrectGuesses = 5);
-                $reactions.answer("Attention, you've got only 1 attempt left!");
-                var display = "";
-                for (var i = 0; i < $session.word.length; i += 1) {
-                    if ($session.guessedLetters.includes($session.word[i])) {
-                        display += $session.word[i];
-                    } else {
-                        display += "_ ";
+                    for (var i = 0; i < $session.word.length; i += 1) {
+                        if ($session.guessedLetters.includes($session.word[i])) {
+                            display += $session.word[i];
+                        } 
+                        else {
+                            display += "_ ";
+                        }
                     }
-                }
-                    
+                if (!$session.word.includes(guess)) {
+                    $session.incorrectGuesses += 1;
+                    }
+                    for (var i = 0; i < $session.word.length; i += 1) {
+                        if ($session.guessedLetters.includes($session.word[i])) {
+                            display += $session.word[i];
+                        } 
+                        else {
+                            display += "_ ";
+                        }
+                    }
+                if ($session.incorrectGuesses === 4){ 
+                    $reactions.answer("Careful there, you've got 2 more attempts!")};
+                 
     state: GameWon
         event!: match
         a: Congrats! You won! The right word was {{$session.word}} Let's play once again, shall we?
