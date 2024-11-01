@@ -40,7 +40,7 @@ theme: /
             intent: /Letter
             script:
                 var guess = $request.query
-                $session.display = "";
+                $session.display = [];
                 if (contains($session.guessedLetters,guess)) {
                     $reactions.answer("Hmmm, looks like you've already tried that letter. Could you choose another one?");
                 } 
@@ -56,14 +56,15 @@ theme: /
                     
     state: words
         script:
-            for (var i = 0; i < $session.word.length;) {
+            for (var i = 0; i < $session.word.length; i++) {
                     if (contains($session.guessedLetters, $session.word[i])) {
-                        $session.display += $session.word[i];
+                        $session.display.push($session.word[i])
                     } 
                     else {
-                        $session.display += "_ ";
+                        $session.display.push("_");
                     }
                 }
+                $session.display.join(" ")
                 $reactions.answer($session.display)
                  
     state: GameWon
