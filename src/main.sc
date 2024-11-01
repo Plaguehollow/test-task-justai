@@ -26,6 +26,7 @@ theme: /
     state: GameBegins
         intent!: /startGame
         script: 
+            $session = {};
             var wordId = $reactions.random(86);
             $session.word = $HangmanGameData[wordId].value.word;
             var maskedword = $session.word.replace(/./g, '_ ');
@@ -49,7 +50,13 @@ theme: /
                     $session.incorrectGuesses += 1;
                     $reactions.answer("wrong")
                 }
-                for (var i = 0; i < $session.word.length; i += 1) {
+                else {$reactions.transition("/words")}
+                if ($session.incorrectGuesses === 4){ 
+                    $reactions.answer("Careful there, you've got 2 more attempts!")};
+                    
+    state: words
+        script:
+            for (var i = 0; i < $session.word.length;) {
                     if (contains($session.guessedLetters, $session.word[i])) {
                         display += $session.word[i];
                     } 
@@ -57,8 +64,7 @@ theme: /
                         display += "_ ";
                     }
                 }
-                if ($session.incorrectGuesses === 4){ 
-                    $reactions.answer("Careful there, you've got 2 more attempts!")};
+                $reactions.answer(display)
                  
     state: GameWon
         event!: match
