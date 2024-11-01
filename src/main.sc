@@ -19,6 +19,10 @@ patterns:
         };
 theme: /
     
+    state: Start
+        q!: $regex</start>
+        a: Hey, do you want to play Hangman?
+    
     state: GameBegins
         intent!: /startGame
         script: 
@@ -43,9 +47,10 @@ theme: /
                     $session.guessedLetters.push(guess)};
                 if (!contains($session.word, guess)) {
                     $session.incorrectGuesses += 1;
+                    $reactions.answer("wrong")
                 }
                 for (var i = 0; i < $session.word.length; i += 1) {
-                    if (contains($session.guessedLetters($session.word[i]))) {
+                    if (contains($session.guessedLetters, $session.word[i])) {
                         display += $session.word[i];
                     } 
                     else {
@@ -70,6 +75,10 @@ theme: /
     state: NoMatch
         a: Sorry, I don't understand. You said: {{$request.query}} . Can you please reformulate this?
 
-    state: Start
-        q!: $regex</start>
-        a: Hey, do you want to play Hangman?
+        
+    state: reset
+        intent!: /Stop
+        script:
+            $session = {};
+            $client = {};
+        go!: /
