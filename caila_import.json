@@ -75,6 +75,18 @@
       "array" : false
     } ],
     "priority" : 0
+  }, {
+    "path" : "/Letter",
+    "enabled" : true,
+    "shared" : false,
+    "phrases" : [ {
+      "text" : "а"
+    } ],
+    "classificationRules" : {
+      "refs" : [ ]
+    },
+    "patterns" : [ ],
+    "priority" : 0
   } ],
   "entities" : [ {
     "entity" : {

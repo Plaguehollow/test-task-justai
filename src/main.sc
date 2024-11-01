@@ -4,7 +4,7 @@ require: slotfilling/slotFilling.sc
 require: common.js
     module = sys.zb-common
 
-require: hangmanGameDataEng.csv
+require: hangmanGameData.csv
     name = HangmanGameData
     var = $HangmanGameData
 
@@ -16,15 +16,16 @@ patterns:
 theme: /
     
     state: GameBegins
-        intent!: /Game
+        intent!: /startGame
         script: 
             var wordId = $reactions.random(86);
             $session.word = $HangmanGameData[wordId].value.word;
-            var maskedword = word.replace(/./g, '_ ');
+            var maskedword = $session.word.replace(/./g, '_ ');
             $reactions.answer("Guess the word: " + maskedword);
-            $session.guessedLetters = [];
+            $session.guessedLetters = ["f","e"];
             $session.incorrectGuesses = 0;
             $session.maxIncorrectGuesses = 6;
+            $reactions.answer($session.guessedLetters);
             $reactions.transition("/GuessLetter")
             
     state: GuessLetter
@@ -32,9 +33,10 @@ theme: /
                 $reactions.answer("Guess a letter (or the whole word):")
             
     state: GameProcess
-            q: Text
+            intent: /Letter
             script:
                 var guess = $request.query
+                $reactions.answer($session.guessedLetters);
                 if ($session.guessedLetters.includes(guess)) {
                 $reactions.answer("Hmmm, looks like you've already tried that letter. Could you choose another one?");
                 } else {
@@ -54,13 +56,14 @@ theme: /
                     } else {
                         display += "_ ";
                     }
+                }
                     
     state: GameWon
         event!: match
         a: Congrats! You won! The right word was {{$session.word}} Let's play once again, shall we?
         
     state: GameOver
-        event!: match
+        intent!: /Game
         a: Oooops, you've got no attempts left. Game over! The correct word was: {{$session.word}}. Let's play again, shall we?
         
     state: Bye
@@ -68,7 +71,6 @@ theme: /
         a: Если нет Bye! Looking forward to playing with you soon
         
     state: NoMatch
-        event!: noMatch
         a: Sorry, I don't understand. You said: {{$request.query}} . Can you please reformulate this?
 
     state: Start
