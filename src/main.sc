@@ -36,12 +36,12 @@ theme: /
             script:
                 var guess = $request.query
                 var display = "";
-                if ($session.guessedLetters.contains(guess)) {
+                if (contains($session.guessedLetters,guess)) {
                     $reactions.answer("Hmmm, looks like you've already tried that letter. Could you choose another one?");
                 } 
                 else {
                     $session.guessedLetters.push(guess)};
-                if (!$session.word.includes(guess)) {
+                if (!contains($session.word, guess)) {
                     $session.incorrectGuesses += 1;
                     }
                     for (var i = 0; i < $session.word.length; i += 1) {
